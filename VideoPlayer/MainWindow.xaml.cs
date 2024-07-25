@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VideoPlayer.Model;
 
 namespace VideoPlayer
 {
@@ -16,9 +17,15 @@ namespace VideoPlayer
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static ApplicationContext applicationContext = new ApplicationContext();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenMoviesCatalog(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new View.MoviesCatalogPage());
         }
     }
 }

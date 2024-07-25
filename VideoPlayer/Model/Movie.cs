@@ -16,9 +16,10 @@ namespace VideoPlayer.Model
         public TimeSpan Duration { get; set; }
         public string VideoPath { get; set; }
         public int DirectorId { get; set; }
-        public Director Director { get; set; }
+        public virtual Director Director { get; set; }
         public int YearOfCreation { get; set; }
         public int GenreId { get; set; }
-        public Genre Genre { get; set; }
+        public virtual Genre Genre { get; set; }
+        public virtual Uri Uri { get { return new Uri(VideoPath, UriKind.Relative); } }
     }
 }

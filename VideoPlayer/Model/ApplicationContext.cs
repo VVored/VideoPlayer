@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VideoPlayer.Model
 {
-    class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Director> Directors { get; set; }
@@ -20,6 +20,7 @@ namespace VideoPlayer.Model
             {
                 optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=video_player_db;Password=Xyecoc2281337;Username=postgres");
                 optionsBuilder.EnableSensitiveDataLogging();
+                optionsBuilder.UseLazyLoadingProxies();
             }
         }
     }
