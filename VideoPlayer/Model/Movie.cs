@@ -20,6 +20,6 @@ namespace VideoPlayer.Model
         public int YearOfCreation { get; set; }
         public int GenreId { get; set; }
         public virtual Genre Genre { get; set; }
-        public virtual Uri Uri { get { return new Uri(VideoPath, UriKind.Relative); } }
+        public virtual string FullVideoPath { get { return AppDomain.CurrentDomain.BaseDirectory.Remove(AppDomain.CurrentDomain.BaseDirectory.IndexOf("\\bin"), 26) + VideoPath; } }
     }
 }

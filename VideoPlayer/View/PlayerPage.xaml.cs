@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace VideoPlayer.View
 {
@@ -21,16 +10,57 @@ namespace VideoPlayer.View
     public partial class PlayerPage : Page
     {
         Uri MoviePath;
-        public PlayerPage(Uri MoviePath)
+        private TimeSpan TotalTime;
+        public PlayerPage(string MoviePath)
         {
-            this.MoviePath = MoviePath;
             InitializeComponent();
+            this.MoviePath = new Uri(MoviePath, UriKind.Absolute);
+            mediaElement.Source = this.MoviePath;
         }
 
         private void PlayClick(object sender, RoutedEventArgs e)
         {
-            mediaElement.Stop();
+            PauseButton.Visibility = Visibility.Visible;
+            PlayButton.Visibility = Visibility.Collapsed;
             mediaElement.Play();
         }
+
+        private void PauseClick(object sender, RoutedEventArgs e)
+        {
+            PlayButton.Visibility = Visibility.Visible;
+            PauseButton.Visibility = Visibility.Collapsed;
+            mediaElement.Pause();
+        }
+
+        private void ForwardClick(object sender, RoutedEventArgs e)
+        {
+            return;
+        }
+
+        private void BackClick(object sender, RoutedEventArgs e)
+        {
+            return;
+        }
+
+        private void mediaElement_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            TotalTime = mediaElement.NaturalDuration.TimeSpan;
+            var timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            if (mediaElement.NaturalDuration.TimeSpan.TotalSeconds > 0)
+            {
+                if (TotalTime.TotalSeconds > 0)
+                {
+                    sliderForVideo.Value = mediaElement.Position.TotalSeconds / TotalTime.TotalSeconds;
+                }
+            }
+        }
+
     }
 }

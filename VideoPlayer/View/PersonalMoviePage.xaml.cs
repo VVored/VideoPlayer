@@ -31,7 +31,7 @@ namespace VideoPlayer.View
 
         private void GoForWatching(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PlayerPage(movie.Uri));
+            NavigationService.Navigate(new PlayerPage(movie.FullVideoPath));
         }
     }
 }
