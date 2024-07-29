@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="imgs\pause.png" />
+    <None Remove="imgs\play.png" />
+    <None Remove="imgs\skip-back.png" />
+    <None Remove="imgs\skip-forward.png" />
+    <None Remove="imgs\volume.png" />
     <None Remove="imgs\Омерзительная восьмерка.jpg" />
     <None Remove="movies\Омерзительная восьмерка.mp4" />
   </ItemGroup>
@@ -30,6 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="imgs\pause.png" />
+    <Resource Include="imgs\play.png" />
+    <Resource Include="imgs\skip-back.png" />
+    <Resource Include="imgs\skip-forward.png" />
+    <Resource Include="imgs\volume.png" />
     <Resource Include="imgs\Омерзительная восьмерка.jpg" />
   </ItemGroup>
 

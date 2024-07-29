@@ -19,10 +19,22 @@
             <MediaElement Volume="0.001" Name="mediaElement" Stretch="Uniform" LoadedBehavior="Manual" MediaOpened="mediaElement_MediaOpened"></MediaElement>
         </Border>
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Name="BackButton" Click="BackClick" Margin="10, 0" BorderBrush="LightGray" Background="LightGray">Back</Button>
-            <Button Name="PlayButton" Click="PlayClick" Margin="10, 0" BorderBrush="LightGray" Background="LightGray">Play</Button>
-            <Button Name="PauseButton" Click="PauseClick" Margin="10, 0" Visibility="Collapsed" BorderBrush="LightGray" Background="LightGray">Pause</Button>
-            <Button Name="ForwardButton" Click="ForwardClick" Margin="10, 0" BorderBrush="LightGray" Background="LightGray">Forward</Button>
+            <Button Name="BackButton" Click="BackClick" Margin="10, 0" BorderBrush="LightGray" Background="LightGray">
+                <Image Source="/imgs/skip-back.png"></Image>
+            </Button>
+            <Button Name="PlayButton" Click="PlayClick" Margin="10, 0" BorderBrush="LightGray" Background="LightGray">
+                <Image Source="/imgs/play.png"></Image>
+            </Button>
+            <Button Name="PauseButton" Click="PauseClick" Margin="10, 0" Visibility="Collapsed" BorderBrush="LightGray" Background="LightGray">
+                <Image Source="/imgs/pause.png"></Image>
+            </Button>
+            <Button Name="ForwardButton" Click="ForwardClick" Margin="10, 0" BorderBrush="LightGray" Background="LightGray">
+                <Image Source="/imgs/skip-forward.png"></Image>
+            </Button>
+        </StackPanel>
+        <StackPanel Margin="30, 0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image Margin="10, 0" Source="/imgs/volume.png" Height="30"></Image>
+            <Slider Name="sliderForAudio" Foreground="LightGray" Width="100" Height="20" Maximum="1" Value="1" Minimum="0" ValueChanged="sliderForAudio_ValueChanged"></Slider>
         </StackPanel>
     </Grid>
 </Page>

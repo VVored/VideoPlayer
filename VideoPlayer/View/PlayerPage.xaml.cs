@@ -48,6 +48,7 @@ namespace VideoPlayer.View
         {
             TotalTime = mediaElement.NaturalDuration.TimeSpan;
             sliderForVideo.Maximum = TotalTime.TotalSeconds;
+            mediaElement.Volume = sliderForAudio.Value;
             var timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
@@ -75,6 +76,11 @@ namespace VideoPlayer.View
             {
                 mediaElement.Position = TimeSpan.Zero;
             }
+        }
+
+        private void sliderForAudio_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            mediaElement.Volume = sliderForAudio.Value;
         }
     }
 }
