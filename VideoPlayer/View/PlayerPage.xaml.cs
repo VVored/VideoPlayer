@@ -34,17 +34,20 @@ namespace VideoPlayer.View
 
         private void ForwardClick(object sender, RoutedEventArgs e)
         {
-            return;
+            mediaElement.Position = TimeSpan.FromSeconds(mediaElement.Position.TotalSeconds + 5);
+            sliderForVideo.Value = mediaElement.Position.TotalSeconds;
         }
 
         private void BackClick(object sender, RoutedEventArgs e)
         {
-            return;
+            mediaElement.Position = TimeSpan.FromSeconds(mediaElement.Position.TotalSeconds - 5);
+            sliderForVideo.Value = mediaElement.Position.TotalSeconds;
         }
 
         private void mediaElement_MediaOpened(object sender, RoutedEventArgs e)
         {
             TotalTime = mediaElement.NaturalDuration.TimeSpan;
+            sliderForVideo.Maximum = TotalTime.TotalSeconds;
             var timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
@@ -57,10 +60,21 @@ namespace VideoPlayer.View
             {
                 if (TotalTime.TotalSeconds > 0)
                 {
-                    sliderForVideo.Value = mediaElement.Position.TotalSeconds / TotalTime.TotalSeconds;
+                    sliderForVideo.Value = mediaElement.Position.TotalSeconds;
                 }
             }
         }
 
+        private void sliderForVideo_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (TotalTime.TotalSeconds > 0)
+            {
+                mediaElement.Position = TimeSpan.FromSeconds(sliderForVideo.Value);
+            }
+            else
+            {
+                mediaElement.Position = TimeSpan.Zero;
+            }
+        }
     }
 }

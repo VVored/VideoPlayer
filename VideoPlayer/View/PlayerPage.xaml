@@ -10,14 +10,15 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <Slider Grid.Row="1" Name="sliderForVideo" Margin="5, 5"></Slider>
+        <Slider Grid.Row="1" Name="sliderForVideo" Foreground="LightGray" Margin="30, 0" VerticalAlignment="Center" MouseLeftButtonUp="sliderForVideo_MouseLeftButtonUp"></Slider>
         <Border Grid.Row="0" BorderBrush="LightGray" Background="Black" BorderThickness="5">
             <MediaElement Volume="0.001" Name="mediaElement" Stretch="Uniform" LoadedBehavior="Manual" MediaOpened="mediaElement_MediaOpened"></MediaElement>
         </Border>
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
             <Button Name="BackButton" Click="BackClick" Margin="10, 0" BorderBrush="LightGray" Background="LightGray">Back</Button>
             <Button Name="PlayButton" Click="PlayClick" Margin="10, 0" BorderBrush="LightGray" Background="LightGray">Play</Button>
             <Button Name="PauseButton" Click="PauseClick" Margin="10, 0" Visibility="Collapsed" BorderBrush="LightGray" Background="LightGray">Pause</Button>
