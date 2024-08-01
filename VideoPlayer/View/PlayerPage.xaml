@@ -36,5 +36,15 @@
             <Image Margin="10, 0" Source="/imgs/volume.png" Height="30"></Image>
             <Slider Name="sliderForAudio" Foreground="LightGray" Width="100" Height="20" Maximum="1" Value="1" Minimum="0" ValueChanged="sliderForAudio_ValueChanged"></Slider>
         </StackPanel>
+        <ComboBox Grid.Row="2" HorizontalAlignment="Left" Margin="30, 0" SelectionChanged="cbSpeedRatio_SelectionChanged" Name="cbSpeedRatio" Foreground="lightgray">
+            <ComboBoxItem>0,25</ComboBoxItem>
+            <ComboBoxItem>0,5</ComboBoxItem>
+            <ComboBoxItem>0,75</ComboBoxItem>
+            <ComboBoxItem>1,0</ComboBoxItem>
+            <ComboBoxItem>1,25</ComboBoxItem>
+            <ComboBoxItem>1,5</ComboBoxItem>
+            <ComboBoxItem>1,75</ComboBoxItem>
+            <ComboBoxItem>2,0</ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Page>

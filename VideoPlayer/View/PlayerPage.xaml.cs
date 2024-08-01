@@ -82,5 +82,10 @@ namespace VideoPlayer.View
         {
             mediaElement.Volume = sliderForAudio.Value;
         }
+
+        private void cbSpeedRatio_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mediaElement.SpeedRatio = double.Parse(cbSpeedRatio.SelectedValue.ToString().Substring(38));
+        }
     }
 }
