@@ -5,20 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:VideoPlayer.View"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="PlayerPage">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="45*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <Slider Grid.Row="1" Name="sliderForVideo" Foreground="LightGray" Margin="30, 0" VerticalAlignment="Center" MouseLeftButtonUp="sliderForVideo_MouseLeftButtonUp"></Slider>
-        <Border Grid.Row="0" BorderBrush="LightGray" Background="Black" BorderThickness="5">
+        <Slider Grid.Row="1" Name="sliderForVideo" Foreground="LightGray" VerticalAlignment="Center" MouseLeftButtonUp="sliderForVideo_MouseLeftButtonUp" Grid.Column="1"></Slider>
+        <Border Grid.Row="0" BorderBrush="LightGray" Background="Black" BorderThickness="5" Grid.ColumnSpan="3">
             <MediaElement Volume="0.001" Name="mediaElement" Stretch="Uniform" LoadedBehavior="Manual" MediaOpened="mediaElement_MediaOpened"></MediaElement>
         </Border>
-        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+        <Label FontSize="20" Foreground="LightGray" Grid.Row="2" HorizontalAlignment="Right" Name="lbTimer" VerticalAlignment="Center" Grid.Column="1">-:-:- / -:-:-</Label>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
             <Button Name="BackButton" Click="BackClick" Margin="10, 0" BorderBrush="LightGray" Background="LightGray">
                 <Image Source="/imgs/skip-back.png"></Image>
             </Button>
@@ -32,19 +38,19 @@
                 <Image Source="/imgs/skip-forward.png"></Image>
             </Button>
         </StackPanel>
-        <StackPanel Margin="30, 0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Column="1">
+            <ComboBox Grid.Row="2" SelectionChanged="cbSpeedRatio_SelectionChanged" Margin="0, 0, 10, 0" Name="cbSpeedRatio" Foreground="lightgray">
+                <ComboBoxItem>0,25</ComboBoxItem>
+                <ComboBoxItem>0,5</ComboBoxItem>
+                <ComboBoxItem>0,75</ComboBoxItem>
+                <ComboBoxItem>1,0</ComboBoxItem>
+                <ComboBoxItem>1,25</ComboBoxItem>
+                <ComboBoxItem>1,5</ComboBoxItem>
+                <ComboBoxItem>1,75</ComboBoxItem>
+                <ComboBoxItem>2,0</ComboBoxItem>
+            </ComboBox>
             <Image Margin="10, 0" Source="/imgs/volume.png" Height="30"></Image>
             <Slider Name="sliderForAudio" Foreground="LightGray" Width="100" Height="20" Maximum="1" Value="1" Minimum="0" ValueChanged="sliderForAudio_ValueChanged"></Slider>
         </StackPanel>
-        <ComboBox Grid.Row="2" HorizontalAlignment="Left" Margin="30, 0" SelectionChanged="cbSpeedRatio_SelectionChanged" Name="cbSpeedRatio" Foreground="lightgray">
-            <ComboBoxItem>0,25</ComboBoxItem>
-            <ComboBoxItem>0,5</ComboBoxItem>
-            <ComboBoxItem>0,75</ComboBoxItem>
-            <ComboBoxItem>1,0</ComboBoxItem>
-            <ComboBoxItem>1,25</ComboBoxItem>
-            <ComboBoxItem>1,5</ComboBoxItem>
-            <ComboBoxItem>1,75</ComboBoxItem>
-            <ComboBoxItem>2,0</ComboBoxItem>
-        </ComboBox>
     </Grid>
 </Page>

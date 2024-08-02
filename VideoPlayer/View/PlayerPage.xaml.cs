@@ -18,6 +18,12 @@ namespace VideoPlayer.View
             mediaElement.Source = this.MoviePath;
         }
 
+        public void RefreshTimeInfo()
+        {
+            sliderForVideo.Value = mediaElement.Position.TotalSeconds;
+            lbTimer.Content = $"{mediaElement.Position.Hours}:{mediaElement.Position.Minutes}:{mediaElement.Position.Seconds} / {TotalTime.Hours}:{TotalTime.Minutes}:{TotalTime.Seconds}";
+        }
+
         private void PlayClick(object sender, RoutedEventArgs e)
         {
             PauseButton.Visibility = Visibility.Visible;
@@ -35,13 +41,13 @@ namespace VideoPlayer.View
         private void ForwardClick(object sender, RoutedEventArgs e)
         {
             mediaElement.Position = TimeSpan.FromSeconds(mediaElement.Position.TotalSeconds + 5);
-            sliderForVideo.Value = mediaElement.Position.TotalSeconds;
+            RefreshTimeInfo();
         }
 
         private void BackClick(object sender, RoutedEventArgs e)
         {
             mediaElement.Position = TimeSpan.FromSeconds(mediaElement.Position.TotalSeconds - 5);
-            sliderForVideo.Value = mediaElement.Position.TotalSeconds;
+            RefreshTimeInfo();
         }
 
         private void mediaElement_MediaOpened(object sender, RoutedEventArgs e)
@@ -61,7 +67,7 @@ namespace VideoPlayer.View
             {
                 if (TotalTime.TotalSeconds > 0)
                 {
-                    sliderForVideo.Value = mediaElement.Position.TotalSeconds;
+                    RefreshTimeInfo();
                 }
             }
         }
@@ -71,6 +77,7 @@ namespace VideoPlayer.View
             if (TotalTime.TotalSeconds > 0)
             {
                 mediaElement.Position = TimeSpan.FromSeconds(sliderForVideo.Value);
+                lbTimer.Content = $"{mediaElement.Position.Hours}:{mediaElement.Position.Minutes}:{mediaElement.Position.Seconds} / {TotalTime.Hours}:{TotalTime.Minutes}:{TotalTime.Seconds}";
             }
             else
             {
